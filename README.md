@@ -1,177 +1,168 @@
-# FileOracle — AI-Powered File Organizer
+# FileOracle – Intelligent Document Management System
 
-FileOracle is an intelligent file management system that scans folders, categorizes files, detects duplicates, provides semantic AI search, analytics, and a local AI chat assistant.
+An AI-powered document management platform designed to simplify file organization, intelligent categorization, duplicate detection, and document retrieval through a modern web interface.
 
-## Tech Stack
+## 🚀 Project Overview
 
-| Layer | Technology |
-|-------|------------|
-| Frontend | React 18, Vite, Tailwind CSS |
-| Backend | FastAPI, SQLAlchemy (async), SQLite |
-| Auth | JWT (python-jose + bcrypt) |
-| AI | scikit-learn TF-IDF (semantic search), rule-based chat |
-| File I/O | watchdog, os, shutil, hashlib |
-| OCR | Tesseract (optional, via pytesseract) |
+FileOracle is an intelligent file management application that helps users organize and manage their digital files efficiently. It combines AI-based classification, semantic search, file monitoring, and analytics to provide a smarter document management experience.
 
-## Quick Start (Local Development)
+The system automatically scans folders, categorizes files, identifies duplicate documents, and makes file retrieval easier through intelligent search.
+
+## ✨ Key Features
+
+- **Smart File Organization** – Automatically scans and categorizes files.
+- **AI-Based Classification** – Uses intelligent classification techniques to organize files.
+- **Duplicate Detection** – Identifies duplicate files using hash-based comparison.
+- **Semantic Search** – Finds files using meaningful search queries.
+- **AI Chat Assistant** – Provides a local chat assistant for file-related queries.
+- **OCR Support** – Extracts text from supported images and documents.
+- **Analytics Dashboard** – Displays file statistics and category information.
+- **Recycle Bin** – Supports file recovery and restoration.
+- **Real-Time Monitoring** – Monitors folders for file changes.
+- **Modern UI** – Responsive interface with dark theme support.
+
+## 🛠️ Technology Stack
+
+| Component       | Technologies           |
+| --------------- | ---------------------- |
+| Frontend        | React.js, Vite         |
+| Styling         | Tailwind CSS           |
+| Backend         | Python, FastAPI        |
+| Database        | SQLite, SQLAlchemy     |
+| Authentication  | JWT, bcrypt            |
+| AI / ML         | Scikit-learn, TF-IDF   |
+| OCR             | Tesseract, Pytesseract |
+| File Monitoring | Watchdog               |
+| Deployment      | Docker, Docker Compose |
+
+## 🏗️ System Architecture
+
+The application follows a frontend-backend architecture.
+
+1. **Frontend:** Provides the user interface for uploading, searching, and managing files.
+2. **Backend:** Handles API requests, authentication, file processing, and AI operations.
+3. **Database:** Stores user information and file metadata.
+4. **AI Processing:** Supports intelligent categorization, semantic search, and duplicate detection.
+
+## 📂 Project Structure
+
+```text
+FileOracle/
+│
+├── backend/
+│   ├── app/
+│   │   ├── api/
+│   │   ├── core/
+│   │   ├── database/
+│   │   ├── models/
+│   │   ├── schemas/
+│   │   ├── services/
+│   │   └── main.py
+│   ├── requirements.txt
+│   └── Dockerfile
+│
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── context/
+│   │   ├── pages/
+│   │   └── App.jsx
+│   ├── package.json
+│   └── Dockerfile
+│
+├── sample_output/
+├── docker-compose.yml
+├── .gitignore
+└── README.md
+```
+
+## ⚙️ Installation and Setup
 
 ### Prerequisites
 
-- **Python 3.11+**
-- **Node.js 18+**
-- (Optional) **Tesseract OCR** for image text extraction
+- Python 3.11 or above
+- Node.js 18 or above
+- npm
+- Git
 
-### 1. Backend
+### 1. Clone the Repository
 
-```powershell
-cd d:\final_pro\backend
+```bash
+git clone https://github.com/krishnakumar0301/intelligent-document-management-system.git
 
-# Create virtual environment
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Configure environment
-copy .env.example .env
-
-# Run API server
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+cd intelligent-document-management-system
 ```
 
-API docs: http://localhost:8000/docs  
-Health: http://localhost:8000/health
+### 2. Backend Setup
 
-### 2. Frontend
+```bash
+cd backend
 
-```powershell
-cd d:\final_pro\frontend
+python -m venv .venv
+
+.venv\Scripts\activate
+
+pip install -r requirements.txt
+```
+
+Configure environment variables:
+
+```bash
+copy .env.example .env
+```
+
+Start the backend:
+
+```bash
+uvicorn app.main:app --reload
+```
+
+Backend API: `http://localhost:8000`
+
+API Documentation: `http://localhost:8000/docs`
+
+### 3. Frontend Setup
+
+Open another terminal:
+
+```bash
+cd frontend
 
 npm install
+
 npm run dev
 ```
 
-App: http://localhost:5173
+Frontend: `http://localhost:5173`
 
-### 3. First Use
+## 📸 Screenshots
 
-1. Open http://localhost:5173/register
-2. Create an account
-3. Go to **Organizer** → enter a folder path (e.g. `C:\Users\YourName\Documents`)
-4. Click **Start Scan**
-5. Explore Dashboard, Search, Duplicates, Chat, Analytics
+Check the `sample_output` folder for application screenshots and interface previews.
 
-## Docker
+## 🔐 Security
 
-```powershell
-cd d:\final_pro
+- JWT-based authentication.
+- Password hashing.
+- Environment-based configuration.
+- Sensitive credentials excluded from version control.
+- Local file access follows operating system permissions.
 
-copy backend\.env.example backend\.env
+## 🎯 Project Objectives
 
-docker compose up --build
-```
+- Reduce manual file organization.
+- Improve document retrieval efficiency.
+- Identify duplicate files.
+- Provide intelligent document categorization.
+- Simplify file management through AI-assisted features.
 
-- Frontend: http://localhost:5173  
-- Backend: http://localhost:8000  
+## 👨‍💻 Developed By
 
-## API Routes
+**Krishna Kumar**
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/v1/auth/register` | Register user |
-| POST | `/api/v1/auth/login/json` | Login (JSON) |
-| POST | `/api/v1/auth/login` | Login (OAuth2 form) |
-| GET | `/api/v1/users/me` | Profile |
-| GET | `/api/v1/files` | List files |
-| POST | `/api/v1/files/upload` | Upload files |
-| POST | `/api/v1/scan` | Scan folder |
-| POST | `/api/v1/scan/organize` | Organize files |
-| GET | `/api/v1/duplicates` | List duplicates |
-| POST | `/api/v1/search` | Semantic search |
-| POST | `/api/v1/chat` | AI chat |
-| GET | `/api/v1/analytics/dashboard` | Dashboard stats |
-| GET | `/api/v1/recycle` | Recycle bin |
-| GET/PATCH | `/api/v1/settings` | User settings |
+MCA Student | Aspiring Software Developer
 
-Full interactive docs: http://localhost:8000/docs
+GitHub: [https://github.com/krishnakumar0301](https://github.com/krishnakumar0301)
 
-## Features
+---
 
-- JWT authentication & protected routes
-- Dashboard with charts and analytics cards
-- Auto file categorization (images, videos, documents, audio, archives, code)
-- Hash-based duplicate detection
-- Natural language / semantic search (TF-IDF)
-- Local AI chat assistant (no external API)
-- File preview (images, video, PDF)
-- Recycle bin (soft delete / restore)
-- Real-time folder watcher (watchdog)
-- Drag & drop upload
-- Tags, favorites, bulk rename
-- Voice search (browser Web Speech API)
-- PDF analytics export
-- Dark glassmorphism UI
-- Keyboard shortcuts (Ctrl+D, Ctrl+F, Ctrl+O, Ctrl+K)
-
-## Testing
-
-### Backend
-
-```powershell
-cd d:\final_pro\backend
-.\.venv\Scripts\Activate.ps1
-
-# Health check
-curl http://localhost:8000/health
-
-# Register & login (PowerShell)
-$body = '{"email":"test@test.com","username":"testuser","password":"secret123"}'
-Invoke-RestMethod -Uri http://localhost:8000/api/v1/auth/register -Method POST -Body $body -ContentType "application/json"
-
-$login = '{"username":"testuser","password":"secret123"}'
-$r = Invoke-RestMethod -Uri http://localhost:8000/api/v1/auth/login/json -Method POST -Body $login -ContentType "application/json"
-$token = $r.access_token
-
-# Dashboard (authenticated)
-Invoke-RestMethod -Uri http://localhost:8000/api/v1/analytics/dashboard -Headers @{Authorization="Bearer $token"}
-```
-
-### Frontend
-
-```powershell
-cd d:\final_pro\frontend
-npm run build
-```
-
-Build should complete without errors.
-
-## Optional: Tesseract OCR
-
-**Windows:** Install from https://github.com/UB-Mannheim/tesseract/wiki  
-**Linux:** `sudo apt install tesseract-ocr`  
-**macOS:** `brew install tesseract`
-
-## Project Structure
-
-See [FOLDER_STRUCTURE.md](./FOLDER_STRUCTURE.md) for the complete tree.
-
-## Environment Variables
-
-| Variable | Default | Description |
-|----------|---------|-------------|
-| SECRET_KEY | (dev key) | JWT signing secret |
-| DATABASE_URL | sqlite path | Async SQLite URL |
-| CORS_ORIGINS | localhost:5173 | Allowed frontend origins |
-| WATCHER_ENABLED | true | Background file watcher |
-
-## Security Notes
-
-- Change `SECRET_KEY` in production
-- Scan only folders you trust
-- File operations run with the server's OS permissions
-- Use HTTPS in production
-
-## License
-
-MIT — for educational and personal use.
+*FileOracle – Making File Management Smarter with AI.*
