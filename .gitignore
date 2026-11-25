@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# Node
+node_modules/
+dist/
+.vite/
+
+# Env & data
+.env
+backend/.env
+backend/data/
+backend/logs/
+*.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+# Local uploaded files
+backend/storage/Documents/*
+backend/storage/Images/*
+backend/storage/Others/*
+
+# Keep folder structure
+!backend/storage/Documents/.gitkeep
+!backend/storage/Images/.gitkeep
+!backend/storage/Others/.gitkeep
